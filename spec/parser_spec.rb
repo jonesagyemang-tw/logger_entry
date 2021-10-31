@@ -26,4 +26,12 @@ RSpec.describe 'error handling' do
       end.to output(/Log file not found/).to_stderr_from_any_process
     end
   end
+
+  context 'log file exists' do
+    it 'should not raise an exception' do
+      expect do
+        system('./lib/parser.rb webserver.log')
+      end.not_to output(/Log file not found/).to_stderr_from_any_process
+    end
+  end
 end
