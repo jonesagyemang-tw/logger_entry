@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 RSpec.describe 'parser' do
+  subject(:system_run) { system('./lib/parser.rb sample.log') }
+
   it 'returns ordered list of webpages with most views' do
     expected_result = <<~OUTPUT
       /home 4 visits
@@ -8,12 +10,11 @@ RSpec.describe 'parser' do
       /help_page/1 1 visits
     OUTPUT
 
-    expect do
-      system('./lib/parser.rb sample.log')
-    end.to output(Regexp.new(expected_result, Regexp::MULTILINE)).to_stdout_from_any_process
+    expectation = Regexp.new(expected_result, Regexp::MULTILINE)
+
+    expect { system_run }.to output(expectation).to_stdout_from_any_process
   end
 
-  # list of webpages with most unique page views also ordered
   it 'returns ordered list of most unique page views' do
     expected_result = <<~OUTPUT
       /home 3 unique visits
@@ -21,8 +22,8 @@ RSpec.describe 'parser' do
       /help_page/1 1 unique visits
     OUTPUT
 
-    expect do
-      system('./lib/parser.rb sample.log')
-    end.to output(Regexp.new(expected_result, Regexp::MULTILINE)).to_stdout_from_any_process
+    expectation = Regexp.new(expected_result, Regexp::MULTILINE)
+
+    expect { system_run }.to output(expectation).to_stdout_from_any_process
   end
 end

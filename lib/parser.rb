@@ -12,7 +12,8 @@ raise FileNotFoundError, 'Log file not found' unless File.exist?(ARGV[0])
 entries = []
 File.foreach(ARGV[0]) do |entry|
   uri, ip_address = entry.split ' '
-  entries << LogEntry.new(uri: uri, ip_address: ip_address)
+  log_entry = LogEntry.new(uri: uri, ip_address: ip_address)
+  entries << log_entry if log_entry.valid?
 end
 
 results = entries.group_by(&:uri)

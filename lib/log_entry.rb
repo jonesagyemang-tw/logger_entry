@@ -9,4 +9,8 @@ class LogEntry
     @uri = uri
     @ip_address = ip_address
   end
+
+  def valid?
+    !uri.nil? && !uri.empty? && /^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$/.match?(ip_address)
+  end
 end
