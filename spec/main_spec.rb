@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe 'parser' do
-  subject(:system_run) { system('./lib/parser.rb sample.log') }
+RSpec.describe 'main' do
+  subject(:system_run) { system('./lib/main.rb sample.log') }
 
   it 'returns ordered list of webpages with most views' do
     expected_result = <<~OUTPUT

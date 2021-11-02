@@ -4,7 +4,7 @@ RSpec.describe 'error handling' do
   context 'missing log file' do
     it 'throws an exception' do
       expect do
-        system('./lib/parser.rb')
+        system('./lib/main.rb')
       end.to output(/Missing log file/).to_stderr_from_any_process
     end
   end
@@ -12,7 +12,7 @@ RSpec.describe 'error handling' do
   context 'log file is available' do
     it 'should not throw an exception' do
       expect do
-        system('./lib/parser.rb anyfile.log')
+        system('./lib/main.rb anyfile.log')
       end.to_not output(/Missing log file/).to_stderr_from_any_process
     end
   end
