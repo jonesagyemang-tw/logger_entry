@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../lib/log_entry'
-
 RSpec.describe LogEntry do
   describe '#validation' do
     context 'invalid IP Address' do

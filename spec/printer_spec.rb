@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../lib/printer'
-
 RSpec.describe Printer do
   describe 'print page views' do
     context 'general' do

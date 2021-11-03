@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative '../lib/parser'
-
 RSpec.describe Parser do
   describe 'parsing' do
     context 'valid entries' do
