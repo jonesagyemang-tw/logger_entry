@@ -27,8 +27,6 @@ class Parser
   def run
     parse
     process_valid_entries
-    print_page_views
-    print_unique_page_views
   end
 
   private
@@ -38,17 +36,5 @@ class Parser
                                     .sort_by { |_, value| value.count }
                                     .reverse
                                     .to_h
-  end
-
-  def print_page_views
-    results.each do |key, value|
-      puts "#{key} #{value.count} visits"
-    end
-  end
-
-  def print_unique_page_views
-    results.each do |key, value|
-      puts "#{key} #{value.uniq(&:ip_address).count} unique visits"
-    end
   end
 end

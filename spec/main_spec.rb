@@ -17,7 +17,7 @@ RSpec.describe 'main' do
 
   it 'returns ordered list of most unique page views' do
     expected_result = <<~OUTPUT
-      /home 3 unique visits
+      /home 2 unique visits
       /about/2 2 unique visits
       /help_page/1 1 unique visits
     OUTPUT
