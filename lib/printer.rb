@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'pry'
-
 # Prints page views from parsed server logs
 class Printer
   attr_reader :page_views

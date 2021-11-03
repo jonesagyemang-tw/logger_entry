@@ -1,12 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require 'pry'
-require_relative 'parser'
-require_relative 'printer'
-require_relative 'log_entry'
-require_relative 'errors/missing_logfile_error'
-require_relative 'errors/file_not_found_error'
+require_relative '../support/env'
 
 file_name = ARGV[0]
 raise MissingLogFileError, 'Missing log file' if ARGV.empty?
