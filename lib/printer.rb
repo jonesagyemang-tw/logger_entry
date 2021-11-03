@@ -2,26 +2,27 @@
 
 require 'pry'
 
-# Prints results from parsed server logs
+# Prints page views from parsed server logs
 class Printer
-  attr_reader :results
+  attr_reader :page_views
 
-  def initialize(results:)
-    @results = results || {}
+  def initialize(page_views:)
+    @page_views = page_views || {}
   end
 
   def print_page_views
-    results.each do |uri, log_entry|
+    page_views.each do |uri, log_entry|
       puts "#{uri} #{log_entry.count} visits"
     end
   end
 
   def print_unique_page_views
-    results.each do |uri, log_entry|
+    page_views.each do |uri, log_entry|
       unique_occurrences = log_entry.map(&:ip_address)
                                     .tally
                                     .select { |_, occurrences| occurrences == 1 }
-      puts "#{uri} #{unique_occurrences.count} unique visits"
+                                    .count
+      puts "#{uri} #{unique_occurrences} unique visits" if unique_occurrences.positive?
     end
   end
 end
